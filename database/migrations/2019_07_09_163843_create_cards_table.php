@@ -18,7 +18,7 @@ class CreateCardsTable extends Migration
             $table->string('title');
             $table->integer('list_id');
             $table->longText('description');
-            $table->integer('order_by');
+            $table->integer('order_by')->nullable();
             $table->timestamps();
         });
     }

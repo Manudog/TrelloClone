@@ -17,7 +17,7 @@ class CreateListsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('board_id');
             $table->string('title');
-            $table->integer('order_by');
+            $table->integer('order_by')->nullable();
             $table->timestamps();
         });
     }
