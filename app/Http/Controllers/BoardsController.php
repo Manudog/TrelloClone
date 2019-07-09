@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Board;
+use App\Liste;
 
 class BoardsController extends Controller
 {
@@ -65,8 +66,11 @@ class BoardsController extends Controller
      */
     public function show($id)
     {
+
         $board = Board::find($id);
-        return view('boards.show')->with('board', $board);
+
+        $lists = Liste::orderBy('created_at', 'desc')->where('board_id', $board->id)->paginate(10);
+        return view('boards.show')->with('board', $board)->with('lists', $lists);
     }
 
     /**
