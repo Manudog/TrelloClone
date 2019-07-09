@@ -25,11 +25,17 @@
                               <h3 class="card-title">{{$list->title}}</h3>
                         </div>
                         <div class="card-body">
-                              <?php $cards = App\Card::orderBy('created_at', 'desc')->where('list_id', $list->id)->paginate(10); ?>
+                              <?php $cards = App\Card::orderBy('created_at', 'desc')->where('list_id', $list->id)->where('item_id', NULL)->paginate(10); ?>
                               @foreach($cards as $card)
                                     <div class="card">
                                           {{$card->title}}
-                                          <a href="/item/create/{{$card->id}}" class="card-link">Créer un item</a>
+                                          <?php $items = App\Card::orderBy('created_at', 'desc')->where('item_id', $list->id)->paginate(10); ?>
+                                          @foreach($items as $item)
+                                                <div class="card">
+                                                      {{$item->title}}
+                                                </div>
+                                          @endforeach
+                                          <a href="/items/create/{{$card->id}}" class="card-link">Créer un item</a>
                                     </div>
                               @endforeach
                               <a href="/cards/create/{{$list->id}}" class="card-link">Créer une carte</a>

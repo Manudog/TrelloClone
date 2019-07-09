@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Item;
 
 class ItemsController extends Controller
 {
@@ -21,9 +22,9 @@ class ItemsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('items.create', compact('id'));
     }
 
     /**
@@ -34,7 +35,21 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'list_id' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'item_id' => 'required',
+        ]);
+        
+        $item = new Item;
+        $item->list_id = $request->input('list_id');
+        $item->title = $request->input('title');
+        $item->description = $request->input('description');
+        $item->list_id = $request->input('item_id');
+        $item->save();
+
+        return redirect('/boards/')->with('success', 'Liste ajouté');
     }
 
     /**
