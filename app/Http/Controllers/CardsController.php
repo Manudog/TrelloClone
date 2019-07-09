@@ -7,13 +7,8 @@ use App\Board;
 use App\Liste;
 use App\Card;
 
-class BoardsController extends Controller
+class CardsController extends Controller
 {
-
-    public function __construct(){
-        $this->middleware('auth', ['except' => ['index', 'show']]);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +16,7 @@ class BoardsController extends Controller
      */
     public function index()
     {
-        $boards = Board::orderBy('created_at', 'desc')->paginate(10);
-        return view('boards.index')->with('boards', $boards);
+        //
     }
 
     /**
@@ -30,9 +24,9 @@ class BoardsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('boards.create');
+        return view('cards.create', compact('id'));
     }
 
     /**
@@ -43,20 +37,19 @@ class BoardsController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
+            'list_id' => 'required',
             'title' => 'required',
-            'sub_title' => 'required',
+            'description' => 'required',
         ]);
         
-        $board = new Board;
-        $board->user_id = auth()->user()->id;
-        $board->title = $request->input('title');
-        $board->sub_title = $request->input('sub_title');
-        $board->save();
+        $card = new Card;
+        $card->list_id = $request->input('list_id');
+        $card->title = $request->input('title');
+        $card->description = $request->input('description');
+        $card->save();
 
-        return redirect('/boards')->with('success', 'Tableau ajouté');
-
+        return redirect('/boards/')->with('success', 'Liste ajouté');
     }
 
     /**
@@ -67,11 +60,7 @@ class BoardsController extends Controller
      */
     public function show($id)
     {
-
-        $board = Board::find($id);
-        $lists = Liste::orderBy('created_at', 'desc')->where('board_id', $board->id)->paginate(10);
-
-        return view('boards.show', compact('board', 'lists'));
+        //
     }
 
     /**
@@ -82,8 +71,7 @@ class BoardsController extends Controller
      */
     public function edit($id)
     {
-        $board = Board::find($id);
-        return view('boards.edit')->with('board', $board);
+        //
     }
 
     /**
@@ -95,17 +83,7 @@ class BoardsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'sub_title' => 'required',
-        ]);
-        
-        $board = Board::find($id);
-        $board->title = $request->input('title');
-        $board->sub_title = $request->input('sub_title');
-        $board->save();
-
-        return redirect('/boards')->with('success', 'Tableau modifé');
+        //
     }
 
     /**
@@ -116,9 +94,6 @@ class BoardsController extends Controller
      */
     public function destroy($id)
     {
-        $board = Board::find($id);
-        $board->delete();
-
-        return redirect('/boards')->with('success', 'Tableau supprimé');
+        //
     }
 }

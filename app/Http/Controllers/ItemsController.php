@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use App\Liste;
 
-class ListsController extends Controller
+class ItemsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,9 +21,9 @@ class ListsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        return view('lists.create', compact('id'));
+        //
     }
 
     /**
@@ -36,17 +34,7 @@ class ListsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'board_id' => 'required',
-            'title' => 'required',
-        ]);
-        
-        $list = new Liste;
-        $list->board_id = $request->input('board_id');
-        $list->title = $request->input('title');
-        $list->save();
-
-        return redirect('/boards/'.$request->input('board_id'))->with('success', 'Liste ajouté');
+        //
     }
 
     /**
