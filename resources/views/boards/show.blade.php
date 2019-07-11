@@ -46,4 +46,4 @@
                   <p>Aucune liste dans ce tableau</p>
             @endif
       </div>
-@endsection
+@show

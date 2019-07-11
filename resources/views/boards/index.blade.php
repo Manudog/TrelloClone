@@ -1,6 +1,10 @@
 @extends('layouts.app')
-
+<div id="app">
+      <example-component></example-component>
+      <password-input></password-input>
+</div>
 @section('content')
+
       <h1>Tableaux</h1>
       <hr/>
       @if(!Auth::guest())
@@ -27,4 +31,5 @@
                   <p>Aucun tableau actuellement</p>
             @endif
       </div>
-@endsection
+
+@show

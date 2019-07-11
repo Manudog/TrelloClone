@@ -34,7 +34,4 @@ Route::get('lists/create/{id}', 'ListsController@create');
 Route::resource('cards', 'CardsController');
 Auth::routes();
 Route::get('cards/create/{id}', 'CardsController@create');
-
-Route::resource('items', 'ItemsController');
-Auth::routes();
-Route::get('items/create/{id}', 'ItemsController@create');
+Route::get('items/create/{id}', 'CardsController@create');
