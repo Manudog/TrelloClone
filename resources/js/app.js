@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 // Vue.component('password-input', require('./components/PasswordInput.vue').default);
 Vue.component('boards', require('./components/Boards.vue').default);
+Vue.component('lists', require('./components/Lists.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

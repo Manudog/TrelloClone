@@ -34,19 +34,34 @@ class ListsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'board_id' => 'required',
-            'title' => 'required',
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'board_id' => 'required',
+    //         'title' => 'required',
+    //     ]);
         
-        $list = new Liste;
-        $list->board_id = $request->input('board_id');
-        $list->title = $request->input('title');
-        $list->save();
+    //     $list = new Liste;
+    //     $list->board_id = $request->input('board_id');
+    //     $list->title = $request->input('title');
+    //     $list->save();
 
-        return redirect('/boards/'.$request->input('board_id'))->with('success', 'Liste ajouté');
+    //     return redirect('/boards/'.$request->input('board_id'))->with('success', 'Liste ajouté');
+    // }
+    
+    /**
+     * Store a new list
+     */
+    public function store() {
+
+        request()->validate([
+            'title' => 'required'
+        ]);
+
+        return Liste::create([
+            'title' => request('title')
+        ]);
+
     }
 
     /**

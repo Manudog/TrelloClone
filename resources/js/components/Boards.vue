@@ -7,15 +7,9 @@
                                     <h3 class="card-title">{{board.title}}</h3>
                                     <h6 class="card-subtitle mb-2 text-muted">{{board.sub_title}}</h6>
                               </div>
-                              <!-- <hr/>
-                              <div class="card-body">
-                                    <a :href="'/boards/' + board.id">Voir</a>
-                                    <a :href="'/boards/' + board.id + '/edit'">Éditer</a>
-                              </div> -->
                         </a>
                   </draggable>
                   <boards-form @newBoard="boards.push($event)"></boards-form>
-                  <!-- <p v-if="boards.length == 0">Aucun tableau actuellement</p> -->
             </div>
       </div>
 </template>

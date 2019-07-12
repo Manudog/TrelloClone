@@ -25,13 +25,19 @@ class BoardsController extends Controller
         return view('boards.index')->with('boards', $boards);
     }
 
+    /**
+     * Lists of boards
+     */
     public function boards() {
         $boards  = Board::all();
-        return view('boards.index', [
+        return view('boards', [
             'boards' => $boards
         ]);
     }
 
+    /**
+     * Store a new board
+     */
     public function store() {
 
         request()->validate([
@@ -57,9 +63,9 @@ class BoardsController extends Controller
     {
 
         $board = Board::find($id);
-        $lists = Liste::orderBy('created_at', 'desc')->where('board_id', $board->id)->paginate(10);
+        $lists  = Liste::all()->where('board_id', $board->id);
 
-        return view('boards.show', compact('board', 'lists'));
+        return view('board', compact('board', 'lists'));
     }
 
     /**

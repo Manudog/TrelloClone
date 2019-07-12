@@ -11,25 +11,16 @@
 |
 */
 
-// Page
-// Route::get('/', function () {
-//     return view('home');
-// });
-
-// Fonction controller
-// Route::get('/', 'MonController@bonjour');
-
 Route::get('/', 'TrelloController@index');
-// Route::get('/page', 'TrelloController@page');
 
 // Route::resource('boards', 'BoardsController');
 // Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('lists', 'ListsController');
-Auth::routes();
-Route::get('lists/create/{id}', 'ListsController@create');
+// Route::resource('lists', 'ListsController');
+// Auth::routes();
+// Route::get('lists/create/{id}', 'ListsController@create');
 
 Route::resource('cards', 'CardsController');
 Auth::routes();
@@ -39,5 +30,8 @@ Route::get('items/create/{id}', 'CardsController@create');
 // Tableaux
 Route::get('boards', 'BoardsController@boards');
 Route::get('boards/{id}', 'BoardsController@show');
-Route::get('board/delete/{id}', 'BoardsController@destroy');
+Route::get('boards/delete/{id}', 'BoardsController@destroy');
 Route::post('board', 'BoardsController@store');
+
+// Listes
+Route::post('list', 'ListsController@store');
