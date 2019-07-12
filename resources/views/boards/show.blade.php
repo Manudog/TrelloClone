@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-      <h1>{{$board->title}}</h1>
+      <h1>{{$board->title}} <small class="text-muted" style="font-size:12px;">Mise à jour le {{$board->updated_at->format('d/m/Y')}}</small></h1>
 
-      @if(!Auth::guest())
+      {{-- @if(!Auth::guest())
             <a href="/boards/{{$board->id}}/edit" class="btn btn-lg btn-primary">Éditer</a>
 
             {!!Form::open(['action' => ['BoardsController@destroy', $board->id], 'method' => 'POST'])!!}
@@ -12,10 +12,10 @@
             {!!Form::close()!!}
 
             <a href="/lists/create/{{$board->id}}" class="btn btn-lg btn-success">Ajouter une liste</a>
-      @endif
+      @endif --}}
 
-      <hr/>
-      <small>Mise à jour le {{$board->updated_at}}</small>
+      {{-- <hr/>
+      <small>Mise à jour le {{$board->updated_at}}</small> --}}
 
       <div class="row">
             @if(count($lists) >= 1)

@@ -20,7 +20,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 // Vue.component('password-input', require('./components/PasswordInput.vue').default);
-Vue.component('board-form', require('./components/BoardForm.vue').default);
+Vue.component('boards', require('./components/Boards.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

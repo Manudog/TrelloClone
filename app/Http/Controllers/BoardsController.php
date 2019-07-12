@@ -25,45 +25,10 @@ class BoardsController extends Controller
         return view('boards.index')->with('boards', $boards);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('boards.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    // public function store(Request $request)
-    // {
-
-    //     $this->validate($request, [
-    //         'title' => 'required',
-    //         'sub_title' => 'required',
-    //     ]);
-        
-    //     $board = new Board;
-    //     $board->user_id = auth()->user()->id;
-    //     $board->title = $request->input('title');
-    //     $board->sub_title = $request->input('sub_title');
-    //     $board->save();
-
-    //     return redirect('/boards')->with('success', 'Tableau ajouté');
-
-    // }
-
     public function boards() {
         $boards  = Board::all();
         return view('boards.index', [
-            'boards' => $boards,
-            'user_id' => auth()->user()->id,
+            'boards' => $boards
         ]);
     }
 
@@ -75,7 +40,7 @@ class BoardsController extends Controller
         ]);
 
         return Board::create([
-            'user_id' => request('user_id'),
+            'user_id' => auth()->user()->id,
             'title' => request('title'),
             'sub_title' => request('sub_title'),
         ]);

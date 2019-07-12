@@ -23,7 +23,7 @@ Route::get('/', 'TrelloController@index');
 // Route::get('/page', 'TrelloController@page');
 
 // Route::resource('boards', 'BoardsController');
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -36,5 +36,8 @@ Auth::routes();
 Route::get('cards/create/{id}', 'CardsController@create');
 Route::get('items/create/{id}', 'CardsController@create');
 
-Route::get('/boards', 'BoardsController@boards');
-Route::post('/board', 'BoardsController@store');
+// Tableaux
+Route::get('boards', 'BoardsController@boards');
+Route::get('boards/{id}', 'BoardsController@show');
+Route::get('board/delete/{id}', 'BoardsController@destroy');
+Route::post('board', 'BoardsController@store');
