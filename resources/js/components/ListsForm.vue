@@ -20,14 +20,14 @@ export default {
             return {
                   show : false,
                   form: {
-                        title: ''
+                        title: '',
                   },
                   errors: {}
             }
       },
       methods: {
             submitList() {
-                  axios.post('/list', this.form)
+                  axios.post('/liste', this.form)
                         .then(({data}) => {
                               this.$emit('newList', data),
                               this.form.title = '',

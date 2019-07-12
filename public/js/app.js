@@ -2026,7 +2026,7 @@ __webpack_require__.r(__webpack_exports__);
     submitList: function submitList() {
       var _this = this;
 
-      axios.post('/list', this.form).then(function (_ref) {
+      axios.post('/liste', this.form).then(function (_ref) {
         var data = _ref.data;
         _this.$emit('newList', data), _this.form.title = '', _this.show = false, _this.errors = {};
       })["catch"](function (error) {

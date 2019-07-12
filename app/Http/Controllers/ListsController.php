@@ -55,11 +55,11 @@ class ListsController extends Controller
     public function store() {
 
         request()->validate([
-            'title' => 'required'
+            'title' => 'required',
         ]);
-
+        
         return Liste::create([
-            'title' => request('title')
+            'title' => request('title'),
         ]);
 
     }

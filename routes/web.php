@@ -34,4 +34,4 @@ Route::get('boards/delete/{id}', 'BoardsController@destroy');
 Route::post('board', 'BoardsController@store');
 
 // Listes
-Route::post('list', 'ListsController@store');
+Route::post('liste', 'ListesController@store');
