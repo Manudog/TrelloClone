@@ -14,4 +14,4 @@
       {{Form::hidden('_method', 'PUT')}}
       {{Form::submit('Valider', ['class' => 'btn btn-lg btn-primary'])}}
       {!!Form::close()!!}
-@endsection
+@stop

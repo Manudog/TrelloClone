@@ -13,4 +13,4 @@
       </div>
       {{Form::submit('Valider', ['class' => 'btn btn-lg btn-primary'])}}
       {!!Form::close()!!}
-@endsection
+@stop

@@ -10,4 +10,4 @@
       {{Form::hidden('board_id', $id)}}
       {{Form::submit('Valider', ['class' => 'btn btn-lg btn-primary'])}}
       {!!Form::close()!!}
-@endsection
+@stop

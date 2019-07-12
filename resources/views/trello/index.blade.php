@@ -2,4 +2,4 @@
 
 @section('content')
       <h1>Qanga trello</h1>
-@endsection
+@stop

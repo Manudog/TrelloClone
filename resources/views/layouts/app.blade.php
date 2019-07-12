@@ -14,10 +14,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    @include('inc.menu')
-    <div class="container mt-4">
-            @include('inc.errors')
-            @yield('content')
+    <div id="app">
+        @include('inc.menu')
+        <div class="container mt-4">
+                @include('inc.errors')
+                @yield('content')
+        </div>
     </div>
 </body>
 </html>

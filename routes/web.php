@@ -20,9 +20,9 @@
 // Route::get('/', 'MonController@bonjour');
 
 Route::get('/', 'TrelloController@index');
-Route::get('/page', 'TrelloController@page');
+// Route::get('/page', 'TrelloController@page');
 
-Route::resource('boards', 'BoardsController');
+// Route::resource('boards', 'BoardsController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -35,3 +35,6 @@ Route::resource('cards', 'CardsController');
 Auth::routes();
 Route::get('cards/create/{id}', 'CardsController@create');
 Route::get('items/create/{id}', 'CardsController@create');
+
+Route::get('/boards', 'BoardsController@boards');
+Route::post('/board', 'BoardsController@store');

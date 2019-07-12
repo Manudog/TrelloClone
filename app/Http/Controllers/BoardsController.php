@@ -41,21 +41,44 @@ class BoardsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    // public function store(Request $request)
+    // {
 
-        $this->validate($request, [
+    //     $this->validate($request, [
+    //         'title' => 'required',
+    //         'sub_title' => 'required',
+    //     ]);
+        
+    //     $board = new Board;
+    //     $board->user_id = auth()->user()->id;
+    //     $board->title = $request->input('title');
+    //     $board->sub_title = $request->input('sub_title');
+    //     $board->save();
+
+    //     return redirect('/boards')->with('success', 'Tableau ajouté');
+
+    // }
+
+    public function boards() {
+        $boards  = Board::all();
+        return view('boards.index', [
+            'boards' => $boards,
+            'user_id' => auth()->user()->id,
+        ]);
+    }
+
+    public function store() {
+
+        request()->validate([
             'title' => 'required',
             'sub_title' => 'required',
         ]);
-        
-        $board = new Board;
-        $board->user_id = auth()->user()->id;
-        $board->title = $request->input('title');
-        $board->sub_title = $request->input('sub_title');
-        $board->save();
 
-        return redirect('/boards')->with('success', 'Tableau ajouté');
+        return Board::create([
+            'user_id' => request('user_id'),
+            'title' => request('title'),
+            'sub_title' => request('sub_title'),
+        ]);
 
     }
 
