@@ -16,6 +16,7 @@
 
       {{-- <hr/>
       <small>Mise à jour le {{$board->updated_at}}</small> --}}
-      <lists :data-lists="{{$lists}}"></lists>
+      
+      <lists :data-lists="{{$lists}}" :data-board="{{$board->id}}"></lists>
 
 @stop

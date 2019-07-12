@@ -12,15 +12,7 @@
 */
 
 Route::get('/', 'TrelloController@index');
-
-// Route::resource('boards', 'BoardsController');
-// Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
-// Route::resource('lists', 'ListsController');
-// Auth::routes();
-// Route::get('lists/create/{id}', 'ListsController@create');
 
 Route::resource('cards', 'CardsController');
 Auth::routes();

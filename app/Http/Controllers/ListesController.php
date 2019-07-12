@@ -11,13 +11,15 @@ class ListesController extends Controller
      * Store a new list
      */
     public function store() {
-
+        
         request()->validate([
             'title' => 'required',
         ]);
         
+        // \Debugbar::info(request('dataBoard'));
+
         return Liste::create([
-            'board_id' => 1,
+            'board_id' => request('dataBoard'),
             'title' => request('title'),
         ]);
 

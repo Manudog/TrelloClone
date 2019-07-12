@@ -6,6 +6,7 @@
                         <div class="form-group">
                               <label>Titre</label>
                               <input type="text" class="form-control" :class="{'is-invalid':errors.title}" v-model="form.title"/>
+                              <input type="text" class="form-control" v-model="dataBoard"/>
                               <p class="text-danger" v-if="errors.title" v-text="errors.title[0]"></p>
                         </div>
                         <button type="submit" class="btn btn-lg btn-success mb-4">Valider</button>
@@ -16,11 +17,15 @@
 
 <script>
 export default {
+      
+      props: ['dataBoard'],
+
       data() {
             return {
                   show : false,
                   form: {
                         title: '',
+                        dataBoard: this.dataBoard
                   },
                   errors: {}
             }
