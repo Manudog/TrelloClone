@@ -1967,6 +1967,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1974,15 +1981,19 @@ __webpack_require__.r(__webpack_exports__);
     ListsForm: _ListsForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     Draggable: vuedraggable__WEBPACK_IMPORTED_MODULE_0___default.a
   },
-  props: ['dataLists', 'dataBoard'],
+  props: ['dataLists', 'dataCards', 'dataBoard'],
   data: function data() {
     return {
-      lists: this.dataLists
+      lists: this.dataLists,
+      cards: this.dataCards
     };
   },
   computed: {
     orderedLists: function orderedLists() {
-      return _.orderBy(this.lists, 'id', 'desc');
+      return _.orderBy(this.lists, 'order_by', 'desc');
+    },
+    orderedCards: function orderedCards() {
+      return _.orderBy(this.cards, 'order_by', 'desc');
     }
   }
 });
@@ -6500,7 +6511,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.list {\r\n      background: #F7F7F7;\n}\r\n", ""]);
+exports.push([module.i, "\n.list {\r\n      background: #F7F7F7;\n}\n.add_card {\r\n      background: #CCCCCC;\r\n      text-align: center;\r\n      border: 0;\r\n      display: block;\r\n      padding: 5px 10px;\r\n      width: 100%;\n}\r\n", ""]);
 
 // exports
 
@@ -40697,20 +40708,58 @@ var render = function() {
                   staticStyle: { width: "18rem", margin: "0 0 1rem 1rem" }
                 },
                 [
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h3", { staticClass: "card-title" }, [
-                      _vm._v(_vm._s(list.title))
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "card-link",
-                        attrs: { href: "/cards/create/" + list.id }
-                      },
-                      [_vm._v("Ajouter une carte")]
-                    )
-                  ])
+                  _c(
+                    "div",
+                    { staticClass: "card-body" },
+                    [
+                      _c("h3", { staticClass: "card-title" }, [
+                        _vm._v(_vm._s(list.title))
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.orderedCards, function(card, id) {
+                        return _c(
+                          "draggable",
+                          {
+                            key: id,
+                            attrs: { group: "cards" },
+                            on: {
+                              start: function($event) {
+                                _vm.drag = true
+                              },
+                              end: function($event) {
+                                _vm.drag = false
+                              }
+                            }
+                          },
+                          [
+                            card.list_id == list.id && card.item_id == _vm.NULL
+                              ? _c(
+                                  "div",
+                                  {
+                                    staticClass: "card",
+                                    staticStyle: { margin: "0 0 1rem 0" }
+                                  },
+                                  [
+                                    _c("div", { staticClass: "card-body" }, [
+                                      _c("h3", { staticClass: "card-title" }, [
+                                        _vm._v(_vm._s(card.title))
+                                      ])
+                                    ])
+                                  ]
+                                )
+                              : _vm._e()
+                          ]
+                        )
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        { staticClass: "add_card", attrs: { type: "submit" } },
+                        [_vm._v("Ajouter une carte")]
+                      )
+                    ],
+                    2
+                  )
                 ]
               )
             ]

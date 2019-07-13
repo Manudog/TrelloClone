@@ -53,8 +53,9 @@ class BoardsController extends Controller
 
         $board = Board::find($id);
         $lists  = Liste::all()->where('board_id', $board->id);
+        $cards  = Card::all();
 
-        return view('board', compact('board', 'lists'));
+        return view('board', compact('board', 'lists', 'cards'));
     }
 
     /**
