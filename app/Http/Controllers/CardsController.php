@@ -22,4 +22,18 @@ class CardsController extends Controller
         ]);
 
     }
+
+    public function addItem() {
+        
+        request()->validate([
+            'title' => 'required',
+        ]);
+
+        return Card::create([
+            'item_id' => request('dataCard'),
+            'title' => request('title'),
+        ]);
+
+    }
+
 }

@@ -16,7 +16,7 @@
 <body>
     <div id="app">
         @include('inc.menu')
-        <div class="container mt-4">
+        <div class="p-4">
                 @include('inc.errors')
                 @yield('content')
         </div>

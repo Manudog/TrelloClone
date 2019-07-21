@@ -11,6 +11,12 @@
                                                 <div class="card-body">
                                                       <h3 class="card-title">{{card.title}}</h3>
                                                 </div>
+                                                <div v-for="(cardo, id) in cards" :key="id">
+                                                      <div class="card-body" style="background:#F7F7F7;" v-if="cardo.item_id == card.id && cardo.list_id == list.id">
+                                                            <h3 class="card-title">{{cardo.title}}</h3>
+                                                      </div>
+                                                </div>
+                                                <items-form :data-card="card.id" @newCard="items.push($event)"></items-form>
                                           </div>
                                     </draggable>
                                     <cards-form :data-list="list.id" @newCard="cards.push($event)"></cards-form>
@@ -27,11 +33,11 @@
 import Draggable from 'vuedraggable';
 import ListsForm from './ListsForm.vue'
 import CardsForm from './CardsForm.vue'
-
+import ItemsForm from './ItemsForm.vue'
 
 export default {
 
-      components: {ListsForm, Draggable, CardsForm},
+      components: {ListsForm, Draggable, CardsForm, ItemsForm},
       props: ['dataLists', 'dataCards', 'dataBoard'],
 
       data() {
