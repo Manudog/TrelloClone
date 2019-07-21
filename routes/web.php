@@ -13,11 +13,11 @@
 
 Route::get('/', 'TrelloController@index');
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('cards', 'CardsController');
 Auth::routes();
-Route::get('cards/create/{id}', 'CardsController@create');
-Route::get('items/create/{id}', 'CardsController@create');
+
+// Route::resource('cards', 'CardsController');
+// Route::get('cards/create/{id}', 'CardsController@create');
+// Route::get('items/create/{id}', 'CardsController@create');
 
 // Tableaux
 Route::get('boards', 'BoardsController@boards');
@@ -27,3 +27,6 @@ Route::post('board', 'BoardsController@store');
 
 // Listes
 Route::post('liste', 'ListesController@store');
+
+// Cartes
+Route::post('card', 'CardsController@store');

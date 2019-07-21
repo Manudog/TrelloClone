@@ -13,8 +13,7 @@
                                                 </div>
                                           </div>
                                     </draggable>
-
-                                    <button type="submit" class="add_card">Ajouter une carte</button>
+                                    <cards-form :data-list="list.id" @newCard="cards.push($event)"></cards-form>
                               </div>
                         </div>
                   </draggable>
@@ -27,11 +26,12 @@
 <script>
 import Draggable from 'vuedraggable';
 import ListsForm from './ListsForm.vue'
+import CardsForm from './CardsForm.vue'
 
 
 export default {
 
-      components: {ListsForm, Draggable},
+      components: {ListsForm, Draggable, CardsForm},
       props: ['dataLists', 'dataCards', 'dataBoard'],
 
       data() {
