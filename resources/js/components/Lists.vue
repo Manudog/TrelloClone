@@ -16,7 +16,7 @@
                                                             <h3 class="card-title">{{cardo.title}}</h3>
                                                       </div>
                                                 </div>
-                                                <items-form :data-card="card.id" @newCard="items.push($event)"></items-form>
+                                                <items-form :data-list="list.id" :data-card="card.id" @newCard="items.push($event)"></items-form>
                                           </div>
                                     </draggable>
                                     <cards-form :data-list="list.id" @newCard="cards.push($event)"></cards-form>

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Board;
-use App\Liste;
-use App\Card;
+use App\Models\Board;
+use App\Models\Liste;
+use App\Models\Card;
 
 class BoardsController extends Controller
 {
@@ -19,9 +19,7 @@ class BoardsController extends Controller
      */
     public function boards() {
         $boards  = Board::all();
-        return view('boards', [
-            'boards' => $boards
-        ]);
+        return view('boards', compact("boards"));
     }
 
     /**

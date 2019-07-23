@@ -8,6 +8,7 @@
                               <input type="text" class="form-control" :class="{'is-invalid':errors.title}" v-model="form.title"/>
                               <p class="text-danger" v-if="errors.title" v-text="errors.title[0]"></p>
                               <input type="hidden" class="form-control" v-model="dataCard"/>
+                              <input type="hidden" class="form-control" v-model="dataList"/>
                         </div>
                         <button type="submit" class="btn btn-lg btn-success mb-4">Valider</button>
                   </form>
@@ -18,14 +19,15 @@
 <script>
 export default {
       
-      props: ['dataCard'],
+      props: ['dataCard', 'dataList'],
 
       data() {
             return {
                   show : false,
                   form: {
                         title: '',
-                        dataCard: this.dataCard
+                        dataCard: this.dataCard,
+                        dataList: this.dataList
                   },
                   errors: {}
             }

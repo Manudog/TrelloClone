@@ -2016,14 +2016,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['dataCard'],
+  props: ['dataCard', 'dataList'],
   data: function data() {
     return {
       show: false,
       form: {
         title: '',
-        dataCard: this.dataCard
+        dataCard: this.dataCard,
+        dataList: this.dataList
       },
       errors: {}
     };
@@ -41013,6 +41015,28 @@ var render = function() {
                   _vm.dataCard = $event.target.value
                 }
               }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dataList,
+                  expression: "dataList"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "hidden" },
+              domProps: { value: _vm.dataList },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.dataList = $event.target.value
+                }
+              }
             })
           ]),
           _vm._v(" "),
@@ -41142,7 +41166,10 @@ var render = function() {
                                     }),
                                     _vm._v(" "),
                                     _c("items-form", {
-                                      attrs: { "data-card": card.id },
+                                      attrs: {
+                                        "data-list": list.id,
+                                        "data-card": card.id
+                                      },
                                       on: {
                                         newCard: function($event) {
                                           return _vm.items.push($event)
@@ -57282,8 +57309,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\laravel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\trello\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\trello\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
