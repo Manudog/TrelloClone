@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BoardCreateRequest;
+use App\Repositories\BoardRepository;
 use Illuminate\Http\Request;
 use App\Models\Board;
 use App\Models\Liste;
@@ -10,8 +12,14 @@ use App\Models\Card;
 class BoardsController extends Controller
 {
 
-    public function __construct(){
+    /**
+     * @var BoardRepository
+     */
+    private $boardRepository;
+
+    public function __construct(BoardRepository $boardRepository){
         $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->boardRepository = $boardRepository;
     }
 
     /**
@@ -23,19 +31,19 @@ class BoardsController extends Controller
     }
 
     /**
-     * Store a new board
+     * Store board
      */
-    public function store() {
+    public function store(BoardCreateRequest $request) {
+        $board = new Board();
+        $board = $this->boardRepository->createOrUpdate($request, $board);
+        return response()->json($board);
+    }
 
-        request()->validate([
-            'title' => 'required',
-            'sub_title' => 'required',
-        ]);
+    public function addItem(BoardCreateRequest $request) {
 
         return Board::create([
-            'user_id' => auth()->user()->id,
-            'title' => request('title'),
-            'sub_title' => request('sub_title'),
+            'title' => $request->title,
+            'sub_title' => $request->sub_title,
         ]);
 
     }
