@@ -11,12 +11,29 @@
                                                 <div class="card-body">
                                                       <h3 class="card-title">{{card.title}}</h3>
                                                 </div>
-                                                <div v-for="(cardo, id) in cards" :key="id">
-                                                      <div class="card-body" style="background:#F7F7F7;" v-if="cardo.item_id == card.id && cardo.list_id == list.id">
-                                                            <h3 class="card-title">{{cardo.title}}</h3>
+                                                <div v-for="(item, id) in cards" :key="id">
+                                                      <div class="card-body" @click="newModal(item.id)" style="background:#F7F7F7;cursor:pointer;" v-if="item.item_id == card.id && item.list_id == list.id">
+                                                            <h3 class="card-title">{{item.title}}</h3>
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" :id="'addNew' + item.id" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
+                                                                  <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                        <div class="modal-content">
+                                                                              <div class="modal-header">
+                                                                                    <h5 class="modal-title">{{item.title}}</h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                          <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                              </div>
+                                                                              <div class="modal-body">
+                                                                                    {{item.description}}
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+                                                            </div>
                                                       </div>
                                                 </div>
-                                                <items-form :data-list="list.id" :data-card="card.id" @newCard="items.push($event)"></items-form>
+                                                <items-form :data-list="list.id" :data-card="card.id" @newItem="items.push($event)"></items-form>
                                           </div>
                                     </draggable>
                                     <cards-form :data-list="list.id" @newCard="cards.push($event)"></cards-form>
@@ -38,7 +55,7 @@ import ItemsForm from './ItemsForm.vue'
 export default {
 
       components: {ListsForm, Draggable, CardsForm, ItemsForm},
-      props: ['dataLists', 'dataCards', 'dataBoard'],
+      props: ['dataLists', 'dataCards', 'dataBoard', 'dataItem'],
 
       data() {
             return {
@@ -54,6 +71,11 @@ export default {
                   return _.orderBy(this.cards, 'order_by', 'desc')
             }
       },
+      methods: {
+            newModal(id) {
+                  $('#addNew' + id).modal('show');
+            }
+      }
 }
 </script>
 

@@ -2091,6 +2091,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2102,7 +2119,7 @@ __webpack_require__.r(__webpack_exports__);
     CardsForm: _CardsForm_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     ItemsForm: _ItemsForm_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
-  props: ['dataLists', 'dataCards', 'dataBoard'],
+  props: ['dataLists', 'dataCards', 'dataBoard', 'dataItem'],
   data: function data() {
     return {
       lists: this.dataLists,
@@ -2115,6 +2132,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     orderedCards: function orderedCards() {
       return _.orderBy(this.cards, 'order_by', 'desc');
+    }
+  },
+  methods: {
+    newModal: function newModal(id) {
+      $('#addNew' + id).modal('show');
     }
   }
 });
@@ -41141,23 +41163,139 @@ var render = function() {
                                       ])
                                     ]),
                                     _vm._v(" "),
-                                    _vm._l(_vm.cards, function(cardo, id) {
+                                    _vm._l(_vm.cards, function(item, id) {
                                       return _c("div", { key: id }, [
-                                        cardo.item_id == card.id &&
-                                        cardo.list_id == list.id
+                                        item.item_id == card.id &&
+                                        item.list_id == list.id
                                           ? _c(
                                               "div",
                                               {
                                                 staticClass: "card-body",
                                                 staticStyle: {
-                                                  background: "#F7F7F7"
+                                                  background: "#F7F7F7",
+                                                  cursor: "pointer"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.newModal(item.id)
+                                                  }
                                                 }
                                               },
                                               [
                                                 _c(
                                                   "h3",
                                                   { staticClass: "card-title" },
-                                                  [_vm._v(_vm._s(cardo.title))]
+                                                  [_vm._v(_vm._s(item.title))]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass: "modal fade",
+                                                    attrs: {
+                                                      id: "addNew" + item.id,
+                                                      tabindex: "-1",
+                                                      role: "dialog",
+                                                      "aria-labelledby":
+                                                        "addNewLabel",
+                                                      "aria-hidden": "true"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "modal-dialog modal-dialog-centered",
+                                                        attrs: {
+                                                          role: "document"
+                                                        }
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "div",
+                                                          {
+                                                            staticClass:
+                                                              "modal-content"
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "div",
+                                                              {
+                                                                staticClass:
+                                                                  "modal-header"
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "h5",
+                                                                  {
+                                                                    staticClass:
+                                                                      "modal-title"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        item.title
+                                                                      )
+                                                                    )
+                                                                  ]
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "button",
+                                                                  {
+                                                                    staticClass:
+                                                                      "close",
+                                                                    attrs: {
+                                                                      type:
+                                                                        "button",
+                                                                      "data-dismiss":
+                                                                        "modal",
+                                                                      "aria-label":
+                                                                        "Close"
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "span",
+                                                                      {
+                                                                        attrs: {
+                                                                          "aria-hidden":
+                                                                            "true"
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          "×"
+                                                                        )
+                                                                      ]
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "div",
+                                                              {
+                                                                staticClass:
+                                                                  "modal-body"
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  "\n                                                                              " +
+                                                                    _vm._s(
+                                                                      item.description
+                                                                    ) +
+                                                                    "\n                                                                        "
+                                                                )
+                                                              ]
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
                                                 )
                                               ]
                                             )
@@ -41171,7 +41309,7 @@ var render = function() {
                                         "data-card": card.id
                                       },
                                       on: {
-                                        newCard: function($event) {
+                                        newItem: function($event) {
                                           return _vm.items.push($event)
                                         }
                                       }
