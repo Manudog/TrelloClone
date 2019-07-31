@@ -1,15 +1,15 @@
 <template>
       <div>
             <div>
-                  <button type="submit" class="add_card" @click="show=!show">Ajouter une carte</button>
-                  <form v-show="show" @submit.prevent="submitCard">
+                  <button v-show="addCard" type="submit" class="card-add" @click="show=!show, addCard=!addCard"><i class="fas fa-plus"></i> Ajouter une carte</button>
+                  <form class="form-card" v-show="show" @submit.prevent="submitCard">
                         <div class="form-group">
-                              <label>Titre</label>
-                              <input type="text" class="form-control" :class="{'is-invalid':errors.title}" v-model="form.title"/>
+                              <input type="text" class="" :class="{'is-invalid':errors.title}" v-model="form.title" placeholder="Titre de la carte"/>
                               <p class="text-danger" v-if="errors.title" v-text="errors.title[0]"></p>
-                              <input type="hidden" class="form-control" v-model="dataList"/>
+                              <input type="hidden" v-model="dataList"/>
                         </div>
-                        <button type="submit" class="btn btn-lg btn-success mb-4">Valider</button>
+                        <button type="submit" class="button b-green">Valider</button>
+                        <i class="fas fa-times close-card" @click="show=!show, addCard=!addCard"></i>
                   </form>
             </div>
       </div>
@@ -22,7 +22,8 @@ export default {
 
       data() {
             return {
-                  show : false,
+                  show: false,
+                  addCard: true,
                   form: {
                         title: '',
                         dataList: this.dataList
@@ -37,6 +38,7 @@ export default {
                               this.$emit('newCard', data),
                               this.form.title = '',
                               this.show = false,
+                              this.addCard = true,
                               this.errors = {}
                         })
                         .catch(error => {

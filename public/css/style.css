@@ -1,0 +1,185 @@
+.list {
+      background: #515A6A;
+      color: #C5C9D0;
+      border-radius: 4px;
+      width: 18rem;
+      margin:0 0 10px 10px;
+}
+
+.list-head {
+      padding: 15px 15px 0 15px;
+      overflow: hidden;
+}
+
+.list-head > h2 {
+      font-size: 15px;
+      float: left;
+      color: #C5C9D0;
+}
+
+.list-head > i {
+      padding: 10px;
+      float: right;
+      color: #C5C9D0;
+      margin: -5px -10px 0 0;
+      cursor: pointer;
+      border-radius: 4px;
+}
+
+.list-head > i:hover {
+      background: #3D4450;
+      color: #F7F7F7;
+}
+
+.card-add {
+      background: none;
+      border: 0;
+      width: 100%;
+      text-align: left;
+      color: #C5C9D0;
+      padding: 10px 15px;
+}
+
+.card-add > i {
+      margin: 0 5px 0 0;
+}
+
+.card-add:hover {
+      background: #3D4450;
+      color: #FFFFFF;
+      -webkit-border-bottom-right-radius: 4px;
+      -webkit-border-bottom-left-radius: 4px;
+      -moz-border-radius-bottomright: 4px;
+      -moz-border-radius-bottomleft: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+}
+
+.card-add:focus {
+      outline: 0;
+}
+
+.form-card {
+      padding: 10px;
+}
+
+.form-card > div > input {
+      width: 100%;
+      background: #FFFFFF;
+      border:0;
+      border-radius: 4px;
+      box-shadow: 0 1px 0 rgba(9,30,66,.25);
+      padding: 10px;
+}
+
+.form-card > div > input:focus {
+      outline: 0;
+}
+
+.button {
+    white-space: nowrap;
+    display: inline-block;
+    border: 0;
+    color: #FFFFFF;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    transition: all .50s ease;
+    text-decoration: none;
+    padding: 0 15px;
+    font-family: Camphor, Open Sans, Segoe UI, sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    box-shadow: 0 7px 14px rgba(50,50,93,.1),0 3px 6px rgba(0,0,0,.08);
+    height: 30px;
+    width: auto;
+    line-height: 30px;
+}
+
+.button:hover {
+    background: #424770;
+    color: #FFFFFF;
+}
+
+.b-pink {
+    background: #E90094;
+}
+
+.b-black {
+    background: #424770;
+}
+
+.b-green {
+    background: #04BFA5;
+}
+
+.b-yellow {
+    background: #F1C40F;
+}
+
+.b-red {
+    background: #E74C3C;
+}
+
+.close-card {
+      padding: 8px;
+      color: #C5C9D0;
+      margin: -5px -10px 0 0;
+      cursor: pointer;
+      border-radius: 4px;
+}
+
+.close-card:hover {
+      background: #3D4450;
+      color: #F7F7F7;
+}
+
+.cards {
+      background: #616C7D;
+      margin: 10px;
+      border: 1px solid #7A8599;
+      border-radius: 4px;
+}
+
+.cards > h3 {
+      font-size: 15px;
+      color: #C5C9D0;
+      padding: 15px 15px 0 15px;
+}
+
+.item-add {
+      background: none;
+      border: 0;
+      width: 100%;
+      text-align: left;
+      color: #C5C9D0;
+      padding: 5px 10px;
+}
+
+.item-add > i {
+      margin: 0 5px 0 0;
+}
+
+.item-add:hover {
+      background: #3D4450;
+      color: #FFFFFF;
+      -webkit-border-bottom-right-radius: 4px;
+      -webkit-border-bottom-left-radius: 4px;
+      -moz-border-radius-bottomright: 4px;
+      -moz-border-radius-bottomleft: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+}
+
+.item {
+      cursor: pointer;
+      background: #505050;
+      margin: 0 10px;
+      border-radius: 4px;
+}
+
+.item > h3 {
+      font-size: 15px;
+      color: #C5C9D0;
+      padding: 10px;
+}

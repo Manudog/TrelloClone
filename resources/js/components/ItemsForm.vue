@@ -1,16 +1,16 @@
 <template>
       <div>
             <div>
-                  <button type="submit" class="add_card" @click="show=!show">Ajouter un item</button>
-                  <form v-show="show" @submit.prevent="submitItem">
+                  <button v-show="addItem" type="submit" class="item-add"  @click="show=!show, addItem=!addItem"><i class="fas fa-plus"></i> Ajouter un item</button>
+                  <form class="form-card" v-show="show" @submit.prevent="submitItem">
                         <div class="form-group">
-                              <label>Titre</label>
-                              <input type="text" class="form-control" :class="{'is-invalid':errors.title}" v-model="form.title"/>
+                              <input type="text" class="form-control" :class="{'is-invalid':errors.title}" v-model="form.title" placeholder="Titre de l'item"/>
                               <p class="text-danger" v-if="errors.title" v-text="errors.title[0]"></p>
                               <input type="hidden" class="form-control" v-model="dataCard"/>
                               <input type="hidden" class="form-control" v-model="dataList"/>
                         </div>
-                        <button type="submit" class="btn btn-lg btn-success mb-4">Valider</button>
+                        <button type="submit" class="button b-green">Valider</button>
+                        <i class="fas fa-times close-card" @click="show=!show, addItem=!addItem"></i>
                   </form>
             </div>
       </div>
@@ -24,6 +24,7 @@ export default {
       data() {
             return {
                   show : false,
+                  addItem: true,
                   form: {
                         title: '',
                         dataCard: this.dataCard,
@@ -39,6 +40,7 @@ export default {
                               this.$emit('newItem', data),
                               this.form.title = '',
                               this.show = false,
+                              this.addItem = true,
                               this.errors = {}
                         })
                         .catch(error => {
