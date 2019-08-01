@@ -33,4 +33,16 @@ class ListesController extends Controller
         ]);
 
     }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
+        
+        $liste = Liste::find($id);
+        $liste->title = $request->input('title');
+        $liste->save();
+
+    }
 }

@@ -4,13 +4,14 @@
                   <draggable v-for="(list, id) in orderedLists" :key="id" group="lists" @start="drag=true" @end="drag=false">
                         <div class="list">
                               <div class="list-head">
-                                    <h2>{{list.title}}</h2>
+                                    <!-- <h2>{{list.title}}</h2> -->
+                                    <lists-title :data-list="list.id" :data-title="list.title"></lists-title>
                                     <i class="fas fa-ellipsis-h"></i>
                               </div>
                               <draggable v-for="(card, id) in orderedCards" :key="id" group="cards" @start="drag=true" @end="drag=false">
                                     <div class="cards" v-if="card.list_id == list.id && card.item_id == NULL">
                                           <h3 class="card-title">{{card.title}}</h3>
-                                          <div v-for="(item, id) in cards" :key="id">
+                                          <div v-for="(item, id) in cards" :key="id" group="items" @start="drag=true" @end="drag=false">
                                                 <div class="item" @click="newModal(item.id)" v-if="item.item_id == card.id && item.list_id == list.id">
                                                       <h3>{{item.title}}</h3>
 
@@ -48,10 +49,11 @@ import Draggable from 'vuedraggable';
 import ListsForm from './ListsForm.vue'
 import CardsForm from './CardsForm.vue'
 import ItemsForm from './ItemsForm.vue'
+import ListsTitle from './ListsTitle.vue'
 
 export default {
 
-      components: {ListsForm, Draggable, CardsForm, ItemsForm},
+      components: {ListsForm, Draggable, CardsForm, ItemsForm, ListsTitle},
       props: ['dataLists', 'dataCards', 'dataBoard', 'dataItem'],
 
       data() {

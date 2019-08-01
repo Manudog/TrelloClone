@@ -23,6 +23,7 @@ Route::post('board', 'BoardsController@store');
 
 // Listes
 Route::post('liste', 'ListesController@store');
+Route::post('liste/title', 'ListesController@update');
 
 // Cartes
 Route::post('card', 'CardsController@store');
